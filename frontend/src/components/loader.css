@@ -1,0 +1,80 @@
+.dots {
+    display: flex;
+    align-items: flex-end;
+}
+
+.dot {
+    border: 0.3em solid rgb(0, 21, 36);
+    border-radius: 100%;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+.dot:nth-child(1),
+.dot:nth-child(1)::after {
+    animation-delay: 0.25s;
+}
+
+.dot:nth-child(2),
+.dot:nth-child(2)::after {
+    animation-delay: 0.5s;
+}
+
+.dot:nth-child(3),
+.dot:nth-child(3)::after {
+    animation-delay: 0.75s;
+}
+
+.dot+.dot {
+    margin-left: 0.25em;
+}
+
+.dot::after {
+    content: '';
+    display: block;
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0);
+    width: 0;
+    height: 0;
+    border: 1px solid white;
+    border-radius: 100%;
+    animation: ripple 1.5s linear infinite;
+}
+
+@keyframes bounce {
+
+    from,
+    66%,
+    to {
+        transform: none;
+        opacity: 0.5;
+        box-shadow: none;
+    }
+
+    33% {
+        transform: translate3d(0, -100%, 0);
+        opacity: 1;
+        box-shadow: 0 0 1em white;
+    }
+}
+
+@keyframes ripple {
+
+    from,
+    to {
+        width: 5em;
+        height: 5em;
+        opacity: 0;
+    }
+
+    65% {
+        width: 1em;
+        height: 1em;
+        opacity: 0;
+    }
+
+    66% {
+        width: 1em;
+        height: 1em;
+        opacity: 1;
+    }
+}
